@@ -1,0 +1,256 @@
+/* Import a clean, modern font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+
+/* Define a color palette using CSS variables */
+:root {
+    --bg-color: #f8f9fa;
+    --surface-color: #ffffff;
+    --primary-color: #345eeb;
+    --primary-hover-color: #2a4ecb;
+    --text-color: #212529;
+    --heading-color: #1c2a4e;
+    --border-color: #dee2e6;
+    --shadow-color: rgba(0, 0, 0, 0.07);
+    --accent-color-green: #28a745;
+    --accent-color-red: #dc3545;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 2.5rem;
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box; /* Ensures padding is included in width/height */
+}
+
+.container {
+    max-width: 1100px; 
+    width: 100%;
+    background: var(--surface-color);
+    padding: 2rem 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px var(--shadow-color);
+    border: 1px solid var(--border-color);
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.container:hover {
+    box-shadow: 0 12px 40px var(--shadow-color);
+}
+
+h1, h2 {
+    color: var(--heading-color);
+    padding-bottom: 0.75rem;
+    margin-top: 1.5rem;
+    font-weight: 700;
+}
+
+h1 {
+    font-size: 2em;
+    margin-top: 0;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+h2 {
+    border-bottom: 1px solid var(--border-color);
+    font-size: 1.4em;
+    margin-bottom: 1rem;
+}
+
+.input-group {
+    display: flex;
+    gap: 0.75rem;
+    margin: 1.5rem 0;
+}
+
+#regex-input {
+    flex-grow: 1;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1em;
+    font-family: 'Inter', sans-serif;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+#regex-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(52, 94, 235, 0.2);
+}
+
+#generate-btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    background-color: var(--primary-color);
+    color: white;
+    font-size: 1em;
+    font-weight: 500;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+#generate-btn:hover {
+    background-color: var(--primary-hover-color);
+}
+
+#generate-btn:active {
+    transform: scale(0.98);
+}
+
+#dfa-diagram-container {
+    width: 100%;
+    height: 600px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--bg-color);
+}
+
+.error-message {
+    color: var(--accent-color-red);
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 1.5rem;
+    display: none; /* Hidden by default */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    font-size: 0.9em; /* Slightly smaller font for tables */
+}
+
+th, td {
+    border: 1px solid var(--border-color);
+    padding: 0.6rem;
+    text-align: center;
+}
+
+th {
+    background-color: var(--bg-color);
+    font-weight: 500;
+}
+
+td strong {
+    color: var(--heading-color);
+}
+
+/* Styling for the info sections */
+.info-section {
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-top: 2rem;
+}
+
+.info-section h2 {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 0.5rem;
+}
+
+.info-section ul {
+    padding-left: 20px;
+    line-height: 1.7;
+    color: #495057;
+}
+
+.info-section code {
+    background-color: #e9ecef;
+    padding: 3px 6px;
+    border-radius: 4px;
+    font-family: "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    word-break: break-all;
+}
+
+#ast-diagram-container {
+    width: 100%;
+    height: 400px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: #fff;
+    margin-top: 1rem;
+}
+
+#followpos-table-container table {
+    margin-top: 0;
+}
+
+
+/* ---  RESPONSIVE DESIGN STYLES --- */
+
+/* For Tablets and smaller devices (less than 992px) */
+@media (max-width: 992px) {
+    .container {
+        max-width: 100%; /* Allow container to use full width */
+    }
+
+    h1 {
+        font-size: 1.8em;
+    }
+}
+
+/* For Mobile devices (less than 768px) */
+@media (max-width: 768px) {
+    body {
+        padding: 1rem; /* Reduce padding on the body for smaller screens */
+    }
+
+    .container {
+        padding: 1.5rem 1rem; /* Reduce padding inside the container */
+    }
+
+    .input-group {
+        flex-direction: column; /* Stack the input and button vertically */
+    }
+    
+    #generate-btn {
+        width: 100%; /* Make button full width */
+    }
+
+    h1 {
+        text-align: center;
+        justify-content: center;
+    }
+
+    #dfa-diagram-container {
+        height: 500px; /* Reduce height on mobile to prevent excessive scrolling */
+    }
+
+    #ast-diagram-container {
+        height: 350px;
+    }
+}
+
+/* For Small Mobile devices (less than 480px) */
+@media (max-width: 480px) {
+    body {
+        padding: 0.5rem;
+    }
+    
+    .container {
+        padding: 1rem;
+    }
+
+    h1 {
+        font-size: 1.6em;
+    }
+    
+    h2 {
+        font-size: 1.2em;
+    }
+
+    #dfa-diagram-container {
+        height: 400px;
+    }
+}

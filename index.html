@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regex to DFA Visualizer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Regular Expression to DFA Visualizer ⚡</h1>
+        <p>Enter a regular expression to generate its syntax tree, calculations, and final DFA.</p>
+        
+        <div class="input-group">
+            <input type="text" id="regex-input" placeholder="e.g., (a|b)*c" value="(a|b)*c">
+            <button id="generate-btn">Generate</button>
+        </div>
+
+        <div id="error-container" class="error-message"></div>
+
+        <div class="info-section">
+            <h2>1. Generated Abstract Syntax Tree (AST)</h2>
+            <p>The regular expression is parsed into a syntax tree. Each node is annotated with its <strong>nullable</strong> status and its <strong>firstpos</strong> & <strong>lastpos</strong> sets.</p>
+            <div id="ast-diagram-container">
+                </div>
+        </div>
+        
+        <div class="info-section">
+            <h2>2. 'followpos' Calculation</h2>
+            <p>The <strong>followpos</strong> set is calculated for each position (leaf node) in the tree. This table is the key to building the DFA transitions directly.</p>
+            <div id="followpos-table-container">
+                </div>
+        </div>
+
+        <div class="info-section">
+            <h2>3. DFA State Construction from 'followpos'</h2>
+            <p>This shows the step-by-step process of building DFA states. We start with the `firstpos` of the root and explore new states using the `followpos` table.</p>
+            <div id="dfa-calculation-container">
+                </div>
+        </div>
+
+        <div class="results-container" id="results" style="display: none;">
+            <h2>4. DFA Transition Table</h2>
+            <p>The DFA states are constructed from the 'firstpos' of the root and the 'followpos' table. Each DFA state corresponds to a set of positions.</p>
+            <div id="dfa-table-container">
+                </div>
+
+            <h2>5. Final DFA State Diagram</h2>
+            <p>The final, minimized DFA, generated directly from the calculations above.</p>
+            <div id="dfa-diagram-container">
+                </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+    
+    <script src="js/parser.js"></script>
+    <script src="js/direct-dfa.js"></script>
+    <script src="js/renderer.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
